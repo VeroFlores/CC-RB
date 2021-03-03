@@ -1,0 +1,44 @@
+{
+    "information":[
+        {
+            "phase":"Ideation",
+            "name":"Problem",
+            "id":"I1",
+            "isChecked":false,
+            "date":"",
+            "time":""
+        },
+        {
+            "phase":"Ideation",
+            "name":"Solution",
+            "id":"I2",
+            "isChecked":false,
+            "date":"",
+            "time":""
+        },
+        {
+            "phase":"Ideation",
+            "name":"Team",
+            "id":"I3",
+            "isChecked":false,
+            "date":"",
+            "time":""
+        },        {
+            "phase":"Validation",
+            "name":"Ecosystem",
+            "id":"V1",
+            "isChecked":false,
+            "date":"",
+            "time":""
+        },        
+        {
+            "phase":"Validation",
+            "name":"Results",
+            "id":"V2",
+            "isChecked":false,
+            "date":"",
+            "time":""
+        }     
+        
+    ]
+}
