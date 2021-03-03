@@ -1,8 +1,11 @@
+/* eslint-disable no-shadow */
+/* eslint-disable max-len */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // import Checkbox from '@material-ui/core/Checkbox';
 
 import data from '../../data/informationProject.json';
@@ -47,7 +50,7 @@ const List = () => {
     setValidation(copyInformation);
   };
   return (
-    <>
+    <DragDropContext>
       <div>
         <h1>Ideation</h1>
         <button
@@ -75,6 +78,7 @@ const List = () => {
       </div>
 
       <div>
+
         <h1>Validation</h1>
         <button
           type="button"
@@ -82,23 +86,28 @@ const List = () => {
         >
           {(isValidationSelected ? 'select all in Validation' : 'deselect all in Validation')}
         </button>
-        <ul>
-          {
-        validation.map((item) => (
-          (item.phase === 'Validation')
-            ? (
-              <li key={item.id}>
+        <Droppable droppableId="characters">
+          {(provided) => (
+            <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
+              {
+        validation.map((item, index) => (
+          <Draggable key={item.id} draggableId={item.id} index={index}>
+            {(provided) => (
+              <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                 <input onChange={handleValidationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                 <ComplexGrid infoItem={item} />
               </li>
-            ) : ''
+            )}
+          </Draggable>
+
         ))
       }
-        </ul>
-
+            </ul>
+          )}
+        </Droppable>
       </div>
 
-    </>
+    </DragDropContext>
 
   );
 };
