@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    margin: 'auto',
+    maxWidth: 500,
+  },
+  isSelected: {
+    border: 'solid #1976d2 ',
+    padding: theme.spacing(2),
     maxWidth: 500,
   },
   image: {
@@ -27,14 +31,16 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '100%',
     maxHeight: '100%',
   },
+  isActiveDate: {
+    display: 'none',
+  },
 }));
-
-const ComplexGrid = (props) => {
+const CardItem = (props) => {
   const classes = useStyles();
-  const { infoItem } = props;
+  const { infoItem, isActive } = props;
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper}>
+      <Paper className={isActive ? classes.isSelected : classes.paper}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
@@ -55,8 +61,8 @@ const ComplexGrid = (props) => {
               <img className={classes.img} alt="complex" src="https://www.pngrepo.com/png/293682/180/triangles-shapes-and-symbols.png" />
             </ButtonBase>
           </Grid>
-          <Grid item>
-            <DatePickers />
+          <Grid item className={!isActive ? classes.isActiveDate : ''}>
+            <DatePickers isActive={isActive} />
           </Grid>
         </Grid>
 
@@ -64,7 +70,8 @@ const ComplexGrid = (props) => {
     </div>
   );
 };
-ComplexGrid.propTypes = {
+CardItem.propTypes = {
   infoItem: PropTypes.object.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
-export default ComplexGrid;
+export default CardItem;
