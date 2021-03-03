@@ -9,59 +9,95 @@ import data from '../../data/informationProject.json';
 import ComplexGrid from '../Item/Item';
 
 const List = () => {
-  const [isToggleSelected, setToggleSelected] = useState(true);
-  const [selectedChecks, setSelectedChecks] = useState(data.information);
+  const [isIdeationSelected, setIdeationSelected] = useState(true);
+  const [isValidationSelected, setValidationSelected] = useState(true);
 
-  const handleAllChecked = () => {
-    setToggleSelected(!isToggleSelected);
-    const copyInformation = selectedChecks.map((item) => (
-      isToggleSelected === true ? { ...item, isChecked: true } : { ...item, isChecked: false }
+  const [ideation, setIdeation] = useState(data.Ideation);
+  const [validation, setValidation] = useState(data.Validation);
+
+  const handleAllIdeation = () => {
+    setIdeationSelected(!isIdeationSelected);
+    const copyInformation = ideation.map((item) => (
+      isIdeationSelected === true ? { ...item, isChecked: true } : { ...item, isChecked: false }
     ));
-    setSelectedChecks(copyInformation);
+    setIdeation(copyInformation);
   };
-  const handleChangeChild = (e) => {
+  const handleIdeationChild = (e) => {
     const { name, checked } = e.target;
 
-    const copyInformation = selectedChecks.map((item) => (
+    const copyInformation = ideation.map((item) => (
       item.name === name ? { ...item, isChecked: checked } : item
     ));
-    setSelectedChecks(copyInformation);
+    setIdeation(copyInformation);
   };
 
+  const handleAllValidation = () => {
+    setValidationSelected(!isValidationSelected);
+    const copyInformation = validation.map((item) => (
+      isValidationSelected === true ? { ...item, isChecked: true } : { ...item, isChecked: false }
+    ));
+    setValidation(copyInformation);
+  };
+  const handleValidationChild = (e) => {
+    const { name, checked } = e.target;
+
+    const copyInformation = validation.map((item) => (
+      item.name === name ? { ...item, isChecked: checked } : item
+    ));
+    setValidation(copyInformation);
+  };
   return (
     <>
-      <h1>Ideation</h1>
-      <button
-        type="button"
-        onClick={handleAllChecked}
-      >
-        {(isToggleSelected ? 'select all in ideation' : 'deselect all in ideation')}
-      </button>
-      {
-        selectedChecks.map((item) => (
+      <div>
+        <h1>Ideation</h1>
+        <button
+          type="button"
+          name="Ideation"
+          onClick={handleAllIdeation}
+        >
+          {(isIdeationSelected ? 'select all in ideation' : 'deselect all in ideation')}
+        </button>
+        <ul>
+          {
+        ideation.map((item) => (
           (item.phase === 'Ideation')
             ? (
 
-              <div key={item.id}>
-                <input onChange={handleChangeChild} type="checkbox" name={item.name} checked={item.isChecked} />
+              <li key={item.id}>
+                <input onChange={handleIdeationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                 <ComplexGrid infoItem={item} />
-              </div>
+              </li>
             ) : ''
         ))
       }
-      <h1>Validation</h1>
-      <button type="button">Select all in validation</button>
-      {
-        data.information.map((item) => (
+        </ul>
+
+      </div>
+
+      <div>
+        <h1>Validation</h1>
+        <button
+          type="button"
+          onClick={handleAllValidation}
+        >
+          {(isValidationSelected ? 'select all in Validation' : 'deselect all in Validation')}
+        </button>
+        <ul>
+          {
+        validation.map((item) => (
           (item.phase === 'Validation')
             ? (
-              <div key={item.id}>
-                <input type="radio" />
+              <li key={item.id}>
+                <input onChange={handleValidationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                 <ComplexGrid infoItem={item} />
-              </div>
+              </li>
             ) : ''
         ))
       }
+        </ul>
+
+      </div>
+
     </>
 
   );

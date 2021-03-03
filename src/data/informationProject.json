@@ -1,5 +1,5 @@
 {
-    "information":[
+    "Ideation":[
         {
             "phase":"Ideation",
             "name":"Problem",
@@ -23,7 +23,9 @@
             "isChecked":false,
             "date":"",
             "time":""
-        },        {
+        }],
+        "Validation":[
+            {
             "phase":"Validation",
             "name":"Ecosystem",
             "id":"V1",
