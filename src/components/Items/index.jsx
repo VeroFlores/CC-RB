@@ -49,8 +49,20 @@ const List = () => {
     ));
     setValidation(copyInformation);
   };
+  const handleOnDragEnd = (result) => {
+    console.log(result);
+    if (!result.destination) return;
+
+    const items = Array.from(validation);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setValidation(items);
+  };
+  console.log(ideation);
+  console.log(validation);
   return (
-    <DragDropContext>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
       <div>
         <h1>Ideation</h1>
         <button
@@ -86,9 +98,9 @@ const List = () => {
         >
           {(isValidationSelected ? 'select all in Validation' : 'deselect all in Validation')}
         </button>
-        <Droppable droppableId="characters">
+        <Droppable droppableId="validationItems">
           {(provided) => (
-            <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
+            <ul className="validationItems" {...provided.droppableProps} ref={provided.innerRef}>
               {
         validation.map((item, index) => (
           <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -102,6 +114,7 @@ const List = () => {
 
         ))
       }
+              {provided.placeholder}
             </ul>
           )}
         </Droppable>
