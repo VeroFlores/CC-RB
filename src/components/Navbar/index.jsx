@@ -1,14 +1,12 @@
 import React from 'react';
-import { Link as LinkRouter } from '@reach/router';
+import { Link, Nav } from './styles';
 
 const Navbar = () => (
   <>
-    <h1>Nabvar</h1>
-    <button type="button">All</button>
-    <h3>Templates</h3>
-    <nav>
-      <LinkRouter to="/list">LIST</LinkRouter>
-    </nav>
+    <Nav>
+      <Link to="/">All</Link>
+      <Link to="/list">List</Link>
+    </Nav>
 
   </>
 

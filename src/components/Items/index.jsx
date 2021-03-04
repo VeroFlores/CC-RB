@@ -10,7 +10,9 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import data from '../../data/informationProject.json';
 import CardItem from '../CardItem/index';
-import { Button, List } from './style';
+import {
+  Button, List, Item, Container, Subtitle, Table, Div,
+} from './style';
 
 const TableItems = () => {
   const [isIdeationSelected, setIdeationSelected] = useState(true);
@@ -66,65 +68,72 @@ const TableItems = () => {
   };
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <div>
-        <h1>Ideation</h1>
-        <Button
-          type="button"
-          name="Ideation"
-          onClick={handleAllIdeation}
-        >
-          {(isIdeationSelected ? 'select all in ideation' : 'deselect all in ideation')}
-        </Button>
-        <Droppable droppableId="ideationItems">
-          {(provided) => (
-            <ul className="ideationItems" {...provided.droppableProps} ref={provided.innerRef}>
-              {
+      <Container>
+        <Table>
+          <Div>
+            <Subtitle>IDEATION</Subtitle>
+            <Button
+              type="button"
+              name="Ideation"
+              onClick={handleAllIdeation}
+            >
+              {(isIdeationSelected ? 'select all in ideation' : 'deselect all in ideation')}
+            </Button>
+          </Div>
+
+          <Droppable droppableId="ideationItems">
+            {(provided) => (
+              <List className="ideationItems" {...provided.droppableProps} ref={provided.innerRef}>
+                {
                 ideation.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provided) => (
-                      <List ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                      <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <input onChange={handleIdeationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                         <CardItem infoItem={item} isActive={item.isChecked} />
-                      </List>
+                      </Item>
                     )}
                   </Draggable>
                 ))
               }
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </div>
-      <div>
-        <h1>Validation</h1>
-        <button
-          type="button"
-          onClick={handleAllValidation}
-        >
-          {(isValidationSelected ? 'select all in Validation' : 'deselect all in Validation')}
-        </button>
-        <Droppable droppableId="validationItems">
-          {(provided) => (
-            <ul className="validationItems" {...provided.droppableProps} ref={provided.innerRef}>
-              {
+                {provided.placeholder}
+              </List>
+            )}
+          </Droppable>
+        </Table>
+        <Table>
+          <Div>
+            <Subtitle>Validation</Subtitle>
+            <Button
+              type="button"
+              onClick={handleAllValidation}
+            >
+              {(isValidationSelected ? 'select all in Validation' : 'deselect all in Validation')}
+            </Button>
+          </Div>
+          <Droppable droppableId="validationItems">
+            {(provided) => (
+              <List className="validationItems" {...provided.droppableProps} ref={provided.innerRef}>
+                {
                 validation.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provided) => (
-                      <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                      <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <input onChange={handleValidationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                         <CardItem infoItem={item} isActive={item.isChecked} />
-                      </li>
+                      </Item>
                     )}
                   </Draggable>
 
                 ))
               }
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </div>
+                {provided.placeholder}
+              </List>
+            )}
+          </Droppable>
+        </Table>
 
+      </Container>
     </DragDropContext>
 
   );
