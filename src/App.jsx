@@ -2,8 +2,8 @@ import React from 'react';
 import { Router } from '@reach/router';
 import GlobalStyle from './styles/GlobalStyles';
 import Navbar from './components/Navbar/index';
-import TableAll from './components/TableAll/index';
-import TableSocialInnovation from './components/TableSocialnnovation/index';
+import TableAll from './pages/TableAll/index';
+import TableSocialInnovation from './pages/TableSocialnnovation/index';
 import { Title, Container } from './styles/AppStyles';
 
 const App = () => (

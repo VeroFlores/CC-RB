@@ -9,11 +9,11 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // import Checkbox from '@material-ui/core/Checkbox';
 
 import data from '../../data/informationProject.json';
-import CardItem from '../CardItem/index';
+import CardItem from '../../components/CardItem/index';
 import {
   Button, List, Item, Container, Subtitle, Table, Div, IsActive,
 } from './style';
-import DatePicker from '../DateTimePicker/index';
+import DatePicker from '../../components/DateTimePicker/index';
 
 const TableAll = () => {
   const [isIdeationSelected, setIdeationSelected] = useState(true);

@@ -9,17 +9,15 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // import Checkbox from '@material-ui/core/Checkbox';
 
 import data from '../../data/informationProject.json';
-import CardItem from '../CardItem/index';
+import CardItem from '../../components/CardItem/index';
 import {
   List, Item, Container, Subtitle, Table, Div, IsActive,
 }
   from './styles';
-import DatePicker from '../DateTimePicker/index';
+import DatePicker from '../../components/DateTimePicker/index';
 
 const TableSocialInnovation = () => {
   const allData = data.Ideation.concat(data.Validation);
-  console.log(allData);
-
   const [information, setInformation] = useState(allData);
 
   const handleIdeationChild = (e) => {
@@ -49,20 +47,20 @@ const TableSocialInnovation = () => {
             {(provided) => (
               <List className="ideationItems" {...provided.droppableProps} ref={provided.innerRef}>
                 {
-                information.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided) => (
-                      <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        <input onChange={handleIdeationChild} type="checkbox" name={item.name} checked={item.isChecked} />
-                        <CardItem infoItem={item} isActive={item.isChecked} checked={item.isChecked} isSelected={handleIdeationChild} />
-                        <IsActive shown={item.isChecked}>
-                          <DatePicker />
-                        </IsActive>
-                      </Item>
-                    )}
-                  </Draggable>
-                ))
-              }
+                  information.map((item, index) => (
+                    <Draggable key={item.id} draggableId={item.id} index={index}>
+                      {(provided) => (
+                        <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <input onChange={handleIdeationChild} type="checkbox" name={item.name} checked={item.isChecked} />
+                          <CardItem infoItem={item} isActive={item.isChecked} checked={item.isChecked} isSelected={handleIdeationChild} />
+                          <IsActive shown={item.isChecked}>
+                            <DatePicker />
+                          </IsActive>
+                        </Item>
+                      )}
+                    </Draggable>
+                  ))
+                }
                 {provided.placeholder}
               </List>
             )}
