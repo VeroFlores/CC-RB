@@ -33,6 +33,7 @@ margin:10px;
 `;
 export const Subtitle = styled.h4`
 font-size:15px;
+margin-left: 30px;
 `;
 export const Table = styled.div`
 display:flex;
@@ -40,9 +41,11 @@ flex-direction:column;
 
 `;
 export const Div = styled.div`
-display:flex;
-flex-direction:row;
-justify-content:space-evenly;
+display:grid;
+grid-template-columns: 1fr 1fr;
+@media (min-width: 1200px) {
+    grid-template-columns:1fr 1fr 1fr;
+  }
 `;
 export const IsActive = styled.div`
 display:none;
