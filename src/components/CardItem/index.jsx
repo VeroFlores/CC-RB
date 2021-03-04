@@ -38,7 +38,14 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '100%',
   },
   isActiveDate: {
+    visibility: 'visible',
+    '@media(min-width:1200px)':
+    { visibility: 'hidden' },
+  },
+  isInactive: {
     visibility: 'hidden',
+    '@media(min-width:1200px)':
+    { visibility: 'hidden' },
   },
 }));
 const CardItem = (props) => {
@@ -69,7 +76,7 @@ const CardItem = (props) => {
               </ButtonBase>
             </Grid>
           </Grid>
-          <Grid item className={!isActive ? classes.isActiveDate : ''}>
+          <Grid item className={!isActive ? classes.isInactive : classes.isActiveDate}>
             <DatePickers isActive={isActive} />
           </Grid>
         </Grid>

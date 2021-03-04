@@ -37,9 +37,17 @@ font-size:15px;
 export const Table = styled.div`
 display:flex;
 flex-direction:column;
+
 `;
 export const Div = styled.div`
 display:flex;
 flex-direction:row;
 justify-content:space-evenly;
+`;
+export const IsActive = styled.div`
+display:none;
+visibility: ${(props) => (props.shown ? 'visible' : 'hidden')};
+@media (min-width: 1200px) {
+display:block;
+  }
 `;

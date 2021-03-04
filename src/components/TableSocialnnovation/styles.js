@@ -41,5 +41,12 @@ flex-direction:column;
 export const Div = styled.div`
 display:flex;
 flex-direction:row;
-justify-content:space-evenly;
+margin-left: 30px;
+`;
+export const IsActive = styled.div`
+display:none;
+visibility: ${(props) => (props.shown ? 'visible' : 'hidden')};
+@media (min-width: 1200px) {
+display:block;
+  }
 `;

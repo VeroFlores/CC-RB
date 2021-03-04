@@ -11,8 +11,9 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import data from '../../data/informationProject.json';
 import CardItem from '../CardItem/index';
 import {
-  Button, List, Item, Container, Subtitle, Table, Div,
+  Button, List, Item, Container, Subtitle, Table, Div, IsActive,
 } from './style';
+import DatePicker from '../DateTimePicker/index';
 
 const TableAll = () => {
   const [isIdeationSelected, setIdeationSelected] = useState(true);
@@ -91,6 +92,10 @@ const TableAll = () => {
                       <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <input onChange={handleIdeationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                         <CardItem infoItem={item} isActive={item.isChecked} />
+                        <IsActive shown={item.isChecked}>
+                          <DatePicker />
+                        </IsActive>
+
                       </Item>
                     )}
                   </Draggable>
@@ -100,6 +105,7 @@ const TableAll = () => {
               </List>
             )}
           </Droppable>
+
         </Table>
         <Table>
           <Div>
@@ -121,6 +127,9 @@ const TableAll = () => {
                       <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <input onChange={handleValidationChild} type="checkbox" name={item.name} checked={item.isChecked} />
                         <CardItem infoItem={item} isActive={item.isChecked} />
+                        <IsActive shown={item.isChecked}>
+                          <DatePicker />
+                        </IsActive>
                       </Item>
                     )}
                   </Draggable>

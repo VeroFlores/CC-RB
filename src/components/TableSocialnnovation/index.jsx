@@ -11,9 +11,10 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import data from '../../data/informationProject.json';
 import CardItem from '../CardItem/index';
 import {
-  List, Item, Container, Subtitle, Table, Div,
+  List, Item, Container, Subtitle, Table, Div, IsActive,
 }
   from './styles';
+import DatePicker from '../DateTimePicker/index';
 
 const TableSocialInnovation = () => {
   const allData = data.Ideation.concat(data.Validation);
@@ -53,7 +54,10 @@ const TableSocialInnovation = () => {
                     {(provided) => (
                       <Item ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                         <input onChange={handleIdeationChild} type="checkbox" name={item.name} checked={item.isChecked} />
-                        <CardItem infoItem={item} isActive={item.isChecked} />
+                        <CardItem infoItem={item} isActive={item.isChecked} checked={item.isChecked} isSelected={handleIdeationChild} />
+                        <IsActive shown={item.isChecked}>
+                          <DatePicker />
+                        </IsActive>
                       </Item>
                     )}
                   </Draggable>

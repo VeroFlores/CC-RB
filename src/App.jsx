@@ -4,17 +4,19 @@ import GlobalStyle from './styles/GlobalStyles';
 import Navbar from './components/Navbar/index';
 import TableAll from './components/TableAll/index';
 import TableSocialInnovation from './components/TableSocialnnovation/index';
-import { Title } from './styles/AppStyles';
+import { Title, Container } from './styles/AppStyles';
 
 const App = () => (
   <div>
     <GlobalStyle />
     <Title>Select Builder Schedule-2019 FallCohort</Title>
-    <Navbar />
-    <Router>
-      <TableAll path="/" />
-      <TableSocialInnovation path="/socialInnovation" />
-    </Router>
+    <Container>
+      <Navbar />
+      <Router>
+        <TableAll path="/" />
+        <TableSocialInnovation path="/socialInnovation" />
+      </Router>
+    </Container>
   </div>
 
 );
