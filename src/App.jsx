@@ -2,7 +2,8 @@ import React from 'react';
 import { Router } from '@reach/router';
 import GlobalStyle from './styles/GlobalStyles';
 import Navbar from './components/Navbar/index';
-import TableItems from './components/Items/index';
+import TableAll from './components/TableAll/index';
+import TableSocialInnovation from './components/TableSocialnnovation/index';
 import { Title } from './styles/AppStyles';
 
 const App = () => (
@@ -11,7 +12,8 @@ const App = () => (
     <Title>Select Builder Schedule-2019 FallCohort</Title>
     <Navbar />
     <Router>
-      <TableItems path="/list" />
+      <TableAll path="/" />
+      <TableSocialInnovation path="/socialInnovation" />
     </Router>
   </div>
 

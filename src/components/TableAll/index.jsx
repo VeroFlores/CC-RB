@@ -14,7 +14,7 @@ import {
   Button, List, Item, Container, Subtitle, Table, Div,
 } from './style';
 
-const TableItems = () => {
+const TableAll = () => {
   const [isIdeationSelected, setIdeationSelected] = useState(true);
   const [isValidationSelected, setValidationSelected] = useState(true);
 
@@ -103,7 +103,7 @@ const TableItems = () => {
         </Table>
         <Table>
           <Div>
-            <Subtitle>Validation</Subtitle>
+            <Subtitle>VALIDATION</Subtitle>
             <Button
               type="button"
               onClick={handleAllValidation}
@@ -138,4 +138,4 @@ const TableItems = () => {
 
   );
 };
-export default TableItems;
+export default TableAll;
